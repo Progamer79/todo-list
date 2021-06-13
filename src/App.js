@@ -44,15 +44,30 @@ function App() {
       text: "Graduate from Flatiron",
       isCompleted: false
     },
+      {
+          text: "Go on vacation",
+          isCompleted: false
+      },
     {
       text: "Get A+ certified",
       isCompleted: false
     },
     {
+       text: "Buy a car",
+       isCompleted: false
+    },
+       {
+         text: "Buy a house",
+         isCompleted: false
+       },
+    {
       text: "Build really cool todo app",
       isCompleted: false
     }
   ]);
+
+       
+    
 
   const addTodo = text => {
     const newTodos = [...todos, { text }];
