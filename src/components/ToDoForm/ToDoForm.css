@@ -1,0 +1,23 @@
+.teddy-form {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    margin: 15px;
+  }
+  
+  .teddy-form label {
+    margin-right: 5px;
+  }
+  
+  .teddy-form input {
+    margin-left: 5px;
+  }
+  
+  .teddy-form button {
+    padding: 0px 5px;
+  }
+  
+  .teddy-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
