@@ -1,23 +1,23 @@
-.teddy-form {
+.todo-form {
     display: flex;
     align-content: center;
     flex-direction: column;
     margin: 15px;
   }
   
-  .teddy-form label {
+  .todo-form label {
     margin-right: 5px;
   }
   
-  .teddy-form input {
+  .todo-form input {
     margin-left: 5px;
   }
   
-  .teddy-form button {
+  .todo-form button {
     padding: 0px 5px;
   }
   
-  .teddy-form h2 {
+  .todo-form h2 {
     text-align: center;
     margin-bottom: 15px;
   }

@@ -38,7 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "[] Creat an About Page [] Create teddy adoption list [] Modify Adoption list     -Give a teddy     -Adopt a teddy     -Modify teddy's age, name, or story",
+  "description": "[] Creat an About Page [] Create todo adoption list [] Modify Adoption list     -Give a todo     -Adopt a todo     -Modify todo's age, name, or story",
   "main": "index.js",
   "devDependencies": {},
   "author": "",

@@ -16,24 +16,24 @@ function ToDoForm({ addToDo }) {
     })
   }
 
-  function handleSubmit(event) { 
+  function handleSubmit(event) {
     event.preventDefault();
     const todo = {
-      details: formState.name,
+      details: formState.details,
       priority: formState.priority,
     };
     addToDo(todo);
   }
 
   return (
-    <div className="teddy-form">
-      <h2 className="teddy-form-heading">Make a New To-Do Item</h2>
+    <div className="todo-form">
+      <h2 className="todo-form-heading">Make a New To-Do Item</h2>
       <form onSubmit={handleSubmit}>
         <label>
           To-Do Details:
-          <input 
-            type="text" 
-            name="details" 
+          <input
+            type="text"
+            name="details"
             value={formState.details}
             onChange={handleChange}
           />

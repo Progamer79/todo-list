@@ -1,75 +1,78 @@
 import React, { useState, useEffect } from 'react'
 import "./MyToDoList.css"
-import Teddy from '../ToDo/ToDo'
-import TeddyForm from "../ToDoForm/ToDoForm";
+import ToDo from '../ToDo/ToDo'
+import ToDoForm from "../ToDoForm/ToDoForm";
 
-const BASE_URL = 'https://teddiesdb.herokuapp.com/teddies';
+const BASE_URL = 'http://localhost:3000/todoList';
 
 function MyToDoList() {
-  const [teddies, setTeddies] = useState([]);
+  const [todos, setToDos] = useState([]);
 
   useEffect(() => {
     fetch(BASE_URL)
       .then(r => r.json())
-      .then(teddyData => setTeddies(teddyData))
+      .then(todoData => {
+        console.log(todoData);
+        setToDos(todoData);
+      })
   }, [])
 
-  function deleteToDo(teddyId) {
-    const URL = `${BASE_URL}/${teddyId}`; // BASE_URL + `/${teddyId}`
+  function deleteToDo(todoId) {
+    const URL = `${BASE_URL}/${todoId}`; // BASE_URL + `/${todoId}`
     const config = { method: "DELETE" };
     fetch(URL, config)
       .then(r => r.json())
       .then(() => {
-        const newTeddies = teddies.filter(teddy => teddy.id !== teddyId);
-        setTeddies(newTeddies);
+        const newToDos = todos.filter(todo => todo.id !== todoId);
+        setToDos(newToDos);
       })
   }
 
-  function addTeddy(teddy) {
+  function addToDo(todo) {
     const config = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(teddy)
+      body: JSON.stringify(todo)
     }
 
     fetch(BASE_URL, config)
       .then(r => r.json())
-      .then(newTeddy => {
-        const newTeddies = [...teddies, newTeddy];
-        setTeddies(newTeddies);
+      .then(newtodo => {
+        const newToDos = [...todos, newtodo];
+        setToDos(newToDos);
       })
   }
 
-  function updateToDo(id, updatedTeddy) {
+  function updateToDo(id, updatedtodo) {
     fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedTeddy),
+      body: JSON.stringify(updatedtodo),
     })
       .then((r) => r.json())
-      .then((updatedTeddy) => {
-        const updatedTeddies = teddies.map((teddy) => {
-          if (teddy.id === updatedTeddy.id) return updatedTeddy;
-          return teddy;
+      .then((updatedtodo) => {
+        const updatedToDos = todos.map((todo) => {
+          if (todo.id === updatedtodo.id) return updatedtodo;
+          return todo;
         });
-        setTeddies(updatedTeddies);
+        setToDos(updatedToDos);
       });
   }
 
   return (
-    <div className="teddy-container">
-      <TeddyForm addTeddy={addTeddy} />
-      <div className="teddy-container-list">
-        {teddies.length === 0
+    <div className="todo-container">
+      <ToDoForm addToDo={addToDo} />
+      <div className="todo-container-list">
+        {todos.length === 0
           ? <h1>Loading...</h1>
-          : teddies.map(teddy => {
-            return <Teddy
-              key={teddy.id}
-              teddy={teddy}
+          : todos.map(todo => {
+            return <ToDo
+              key={todo.id}
+              todo={todo}
               deleteToDo={deleteToDo}
               updateToDo={updateToDo}
             />

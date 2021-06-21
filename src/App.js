@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import MyToDoList from "./components/MyToDoList/MyToDoList";
-import TeddyProfile from "./components/TeddyProfile/TeddyProfile";
+import ToDoProfile from "./components/ToDoProfile/ToDoProfile";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <MyToDoList />
         </Route>
         <Route exact path="/my-to-do-list/:id">
-          <TeddyProfile />
+          <ToDoProfile />
         </Route>
         {/* keep the "*" path at the end */}
         <Route path="*">
