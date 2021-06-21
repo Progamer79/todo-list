@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./MyToDoList.css"
-import Teddy from '../Teddy/Teddy'
+import Teddy from '../ToDo/ToDo'
 import TeddyForm from "../ToDoForm/ToDoForm";
 
 const BASE_URL = 'https://teddiesdb.herokuapp.com/teddies';
@@ -14,7 +14,7 @@ function MyToDoList() {
       .then(teddyData => setTeddies(teddyData))
   }, [])
 
-  function deleteTeddy(teddyId) {
+  function deleteToDo(teddyId) {
     const URL = `${BASE_URL}/${teddyId}`; // BASE_URL + `/${teddyId}`
     const config = { method: "DELETE" };
     fetch(URL, config)
@@ -42,7 +42,7 @@ function MyToDoList() {
       })
   }
 
-  function updateTeddy(id, updatedTeddy) {
+  function updateToDo(id, updatedTeddy) {
     fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
       headers: {
@@ -64,15 +64,16 @@ function MyToDoList() {
     <div className="teddy-container">
       <TeddyForm addTeddy={addTeddy} />
       <div className="teddy-container-list">
-        { teddies.length === 0
+        {teddies.length === 0
           ? <h1>Loading...</h1>
-            :teddies.map(teddy => {
-              return <Teddy 
-                        key={teddy.id} 
-                        teddy={teddy} 
-                        deleteTeddy={deleteTeddy}
-                        updateTeddy={updateTeddy}
-                      /> })
+          : teddies.map(teddy => {
+            return <Teddy
+              key={teddy.id}
+              teddy={teddy}
+              deleteToDo={deleteToDo}
+              updateToDo={updateToDo}
+            />
+          })
         }
       </div>
     </div>
